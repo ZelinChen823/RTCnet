@@ -24,7 +24,7 @@ def cylinder_cluster(targets, eps_xy, eps_v, min_targets):
     else:
         distance_v_mask = np.ones(distance_v.shape).astype(np.bool) 
     distance_mask = np.logical_and(distance_xy_mask, distance_v_mask)
-    distance_mask = distance_mask.astype(np.float)
+    distance_mask = distance_mask.astype(float)
     distance_mask[distance_mask<1] = 1e4
     
     clustering = DBSCAN(eps = 1.1, min_samples=min_targets, metric='precomputed').fit(distance_mask)
